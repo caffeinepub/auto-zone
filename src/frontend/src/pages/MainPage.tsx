@@ -13,16 +13,27 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { useActor } from "@/hooks/useActor";
 import {
+  Battery,
   CheckCircle,
   ChevronRight,
+  CircleDot,
   Clock,
+  Cog,
   DollarSign,
+  FileText,
+  Hammer,
+  Layers,
   Loader2,
   Mail,
   MapPin,
   Network,
+  Package,
   Phone,
+  RefreshCw,
+  RotateCcw,
+  Settings,
   Shield,
+  ShoppingBag,
   Star,
   Wrench,
   Zap,
@@ -36,51 +47,75 @@ import { toast } from "sonner";
 const services = [
   {
     id: 1,
-    title: "Engine Diagnostics",
-    image: "/assets/generated/service-engine-diagnostics.dim_600x400.jpg",
-    desc: "Advanced computer diagnostics to identify and resolve engine issues accurately",
+    icon: <Wrench className="w-6 h-6" />,
+    title: "Car Servicing & Repair",
+    desc: "Complete car servicing and repair — from routine checks to full overhauls handled by expert technicians",
   },
   {
     id: 2,
-    title: "Oil Change & Maintenance",
-    image: "/assets/generated/service-oil-change.dim_600x400.jpg",
-    desc: "Regular oil changes and fluid maintenance to keep your engine running smoothly",
+    icon: <Settings className="w-6 h-6" />,
+    title: "Mechanical & General Maintenance",
+    desc: "Regular maintenance, fluid checks, filters, belts, and general mechanical work to keep your car running at peak performance",
   },
   {
     id: 3,
-    title: "Brake Repair",
-    image: "/assets/generated/service-brake-repair.dim_600x400.jpg",
-    desc: "Complete brake system inspection, repair, and replacement for your safety",
+    icon: <Cog className="w-6 h-6" />,
+    title: "Engine & Mechanical Repair",
+    desc: "Deep engine diagnostics and mechanical repair — we get to the root of the problem and fix it right the first time",
   },
   {
     id: 4,
-    title: "AC Service",
-    image: "/assets/generated/service-ac-service.dim_600x400.jpg",
-    desc: "Full air conditioning service, recharging, and repair for comfort on the road",
+    icon: <CircleDot className="w-6 h-6" />,
+    title: "New Tyre Sales & Fitting",
+    desc: "Wide range of new tyres from top brands, fitted and balanced by our experienced wheel specialists",
   },
   {
     id: 5,
-    title: "Battery Replacement",
-    image: "/assets/generated/service-battery.dim_600x400.jpg",
-    desc: "Battery testing, charging, and replacement with quality automotive batteries",
+    icon: <RefreshCw className="w-6 h-6" />,
+    title: "Old Tyre Buying & Selling",
+    desc: "We buy and sell second-hand tyres — get value for your used tyres or pick up quality budget options",
   },
   {
     id: 6,
-    title: "Tire Services",
-    image: "/assets/generated/service-tire.dim_600x400.jpg",
-    desc: "Tire fitting, balancing, alignment, and rotation for safe, smooth driving",
+    icon: <Battery className="w-6 h-6" />,
+    title: "Battery Sales & Replacement",
+    desc: "New battery sales, testing, and replacement. We stock trusted brands and ensure a perfect fit for your vehicle",
   },
   {
     id: 7,
-    title: "Car Inspection",
-    image: "/assets/generated/service-inspection.dim_600x400.jpg",
-    desc: "Comprehensive pre-purchase and safety inspections with detailed reports",
+    icon: <Layers className="w-6 h-6" />,
+    title: "Car Accessories Installation",
+    desc: "Professional fitting of car accessories — dash cams, audio systems, seat covers, lighting, and more",
   },
   {
     id: 8,
-    title: "General Car Repair",
-    image: "/assets/generated/about-workshop.dim_800x600.jpg",
-    desc: "Full-service mechanical repair handled by skilled and experienced technicians",
+    icon: <Package className="w-6 h-6" />,
+    title: "New Spare Parts",
+    desc: "Genuine and quality-approved new spare parts sourced for all major car brands and models",
+  },
+  {
+    id: 9,
+    icon: <RotateCcw className="w-6 h-6" />,
+    title: "Used / Second-Hand Spare Parts",
+    desc: "Affordable used and second-hand spare parts — inspected for quality, available for a wide range of vehicles",
+  },
+  {
+    id: 10,
+    icon: <FileText className="w-6 h-6" />,
+    title: "RTO Documentation & Paperwork",
+    desc: "Complete RTO services — vehicle registration, ownership transfer, RC renewals, and all government paperwork handled",
+  },
+  {
+    id: 11,
+    icon: <ShoppingBag className="w-6 h-6" />,
+    title: "Online Automobile Products",
+    desc: "Auto care and automobile products available online — oils, cleaners, accessories, and more delivered to your door",
+  },
+  {
+    id: 12,
+    icon: <Hammer className="w-6 h-6" />,
+    title: "Workshop Repair Work",
+    desc: "Full workshop repair capabilities — bodywork, welding, underbody repairs, and all types of mechanical workshop jobs",
   },
 ];
 
@@ -165,14 +200,18 @@ const reviews = [
 ];
 
 const serviceTypeOptions = [
-  "Engine Diagnostics",
-  "Oil Change & Maintenance",
-  "Brake Repair",
-  "AC Service",
-  "Battery Replacement",
-  "Tire Services",
-  "Car Inspection",
-  "General Repair",
+  "Car Servicing & Repair",
+  "Mechanical Maintenance",
+  "Engine & Mechanical Repair",
+  "New Tyre Fitting",
+  "Old Tyre Buy/Sell",
+  "Battery Sales & Replacement",
+  "Car Accessories Installation",
+  "New Spare Parts",
+  "Used Spare Parts",
+  "RTO Documentation",
+  "Online Auto Products",
+  "General Workshop Repair",
   "Other",
 ];
 
@@ -361,6 +400,12 @@ function AboutSection() {
                   network. When you choose Auto Zone, you are choosing
                   experience, transparency, and service you can rely on.
                 </p>
+                <p>
+                  From tyres, batteries, spare parts (new and used), car
+                  accessories, to RTO documentation and online automobile
+                  products — we cover it all. Auto Zone is truly your one-stop
+                  destination for everything automotive.
+                </p>
               </div>
             </div>
 
@@ -470,41 +515,107 @@ function ServicesSection({ onBookService }: { onBookService: () => void }) {
             Our Services
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-            Comprehensive automotive care under one roof
+            12 automotive services under one roof — everything your car needs
           </p>
         </div>
 
-        {/* Service cards grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Service cards grid — 2 col mobile, 3 col md, 4 col lg */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           {services.map((service) => (
             <div
               key={service.id}
               data-ocid={`services.item.${service.id}`}
-              className="bg-white rounded-xl overflow-hidden shadow-card-light service-card border border-az-gray-border"
+              className="bg-white rounded-xl p-5 shadow-card-light service-card border border-az-gray-border group flex flex-col"
             >
-              <div className="h-48 service-card-img">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-full h-full object-cover"
+              {/* Icon circle */}
+              <div
+                className="w-12 h-12 rounded-full flex items-center justify-center mb-4 shrink-0 transition-transform group-hover:scale-110"
+                style={{
+                  background:
+                    "linear-gradient(135deg, oklch(0.22 0.07 260), oklch(0.28 0.08 260))",
+                  boxShadow: "0 4px 14px oklch(0.22 0.07 260 / 0.25)",
+                  color: "oklch(0.78 0.12 78)",
+                }}
+              >
+                {service.icon}
+              </div>
+              <h3 className="font-display font-bold text-az-navy text-sm md:text-base mb-2 leading-tight">
+                {service.title}
+              </h3>
+              <p className="text-muted-foreground text-xs md:text-sm leading-relaxed mb-4 flex-1">
+                {service.desc}
+              </p>
+              <button
+                type="button"
+                onClick={onBookService}
+                className="group/btn text-az-gold font-semibold text-xs md:text-sm flex items-center gap-1 transition-all hover:text-az-navy mt-auto"
+              >
+                Book Now
+                <ChevronRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-1" />
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function WhatWeDoSection() {
+  const allServices = [
+    "Car Servicing & Repair",
+    "Mechanical & General Maintenance",
+    "Engine & Mechanical Repair",
+    "New Tyre Sales & Fitting",
+    "Old Tyre Buying & Selling",
+    "Battery Sales & Replacement",
+    "Car Accessories Installation",
+    "New Spare Parts Sales",
+    "Used / Second-Hand Spare Parts",
+    "RTO Documentation & Paperwork",
+    "Online Automobile Products",
+    "Full Workshop Repair Work",
+  ];
+
+  return (
+    <section
+      data-ocid="whatwedo.section"
+      className="py-16"
+      style={{
+        background:
+          "linear-gradient(135deg, oklch(0.13 0.055 260) 0%, oklch(0.17 0.06 265) 100%)",
+      }}
+    >
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="text-center mb-10">
+          <h2 className="font-display font-black text-3xl md:text-4xl text-white mb-3">
+            Everything Your Car Needs,{" "}
+            <span style={{ color: "oklch(0.78 0.12 78)" }}>Under One Roof</span>
+          </h2>
+          <p className="text-white/55 text-base max-w-xl mx-auto">
+            Auto Zone is your complete automotive hub — no need to visit
+            multiple shops
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 max-w-3xl mx-auto">
+          {allServices.map((item, i) => (
+            <div
+              key={item}
+              data-ocid={`whatwedo.item.${i + 1}`}
+              className="flex items-center gap-3 px-4 py-3 rounded-lg transition-colors"
+              style={{ background: "oklch(1 0 0 / 0.05)" }}
+            >
+              <div
+                className="w-5 h-5 rounded-full flex items-center justify-center shrink-0"
+                style={{ background: "oklch(0.78 0.12 78 / 0.2)" }}
+              >
+                <CheckCircle
+                  className="w-3.5 h-3.5"
+                  style={{ color: "oklch(0.78 0.12 78)" }}
                 />
               </div>
-              <div className="p-5">
-                <h3 className="font-display font-bold text-az-navy text-lg mb-2 leading-tight">
-                  {service.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                  {service.desc}
-                </p>
-                <button
-                  type="button"
-                  onClick={onBookService}
-                  className="group/btn text-az-gold font-semibold text-sm flex items-center gap-1 transition-all hover:text-az-navy"
-                >
-                  Book Now
-                  <ChevronRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
-                </button>
-              </div>
+              <span className="text-white/85 text-sm font-medium">{item}</span>
             </div>
           ))}
         </div>
@@ -1256,6 +1367,7 @@ export default function MainPage() {
         <HeroSection onBookService={() => setBookingOpen(true)} />
         <AboutSection />
         <ServicesSection onBookService={() => setBookingOpen(true)} />
+        <WhatWeDoSection />
         <WhyChooseSection />
         <HowItWorksSection />
         <ReviewsSection />

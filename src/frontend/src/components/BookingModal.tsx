@@ -19,14 +19,18 @@ interface BookingModalProps {
 }
 
 const serviceTypes = [
-  "Engine Diagnostics",
-  "Oil Change & Maintenance",
-  "Brake Repair",
-  "AC Service",
-  "Battery Replacement",
-  "Tire Services",
-  "Car Inspection",
-  "General Car Repair",
+  "Car Servicing & Repair",
+  "Mechanical Maintenance",
+  "Engine & Mechanical Repair",
+  "New Tyre Fitting",
+  "Old Tyre Buy/Sell",
+  "Battery Sales & Replacement",
+  "Car Accessories Installation",
+  "New Spare Parts",
+  "Used Spare Parts",
+  "RTO Documentation",
+  "Online Auto Products",
+  "General Workshop Repair",
   "Other",
 ];
 

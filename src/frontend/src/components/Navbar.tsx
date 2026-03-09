@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Menu, Phone, X } from "lucide-react";
+import { Menu, Phone, Settings2, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const navLinks = [
@@ -107,6 +107,22 @@ export default function Navbar({ onBookService }: NavbarProps) {
                 +91 9225516006
               </Button>
             </a>
+            <button
+              type="button"
+              data-ocid="nav.admin_link"
+              onClick={() => {
+                window.location.hash = "#admin";
+              }}
+              className={`flex items-center gap-1.5 text-xs font-medium transition-colors px-2 py-1 rounded-md ${
+                scrolled
+                  ? "text-foreground/40 hover:text-az-navy hover:bg-muted"
+                  : "text-white/40 hover:text-white/70 hover:bg-white/10"
+              }`}
+              title="Admin Dashboard"
+            >
+              <Settings2 className="w-3.5 h-3.5" />
+              Admin
+            </button>
             <Button
               data-ocid="nav.book_service_button"
               onClick={onBookService}
@@ -148,6 +164,18 @@ export default function Navbar({ onBookService }: NavbarProps) {
                 {link.label}
               </button>
             ))}
+            <button
+              type="button"
+              data-ocid="nav.admin_link"
+              onClick={() => {
+                setMenuOpen(false);
+                window.location.hash = "#admin";
+              }}
+              className="px-3 py-3 rounded-lg text-xs font-medium text-foreground/40 hover:text-az-navy hover:bg-muted text-left transition-colors flex items-center gap-2"
+            >
+              <Settings2 className="w-3.5 h-3.5" />
+              Admin Dashboard
+            </button>
             <div className="flex gap-3 mt-3 pt-3 border-t border-az-gray-border">
               <a href="tel:+919225516006" className="flex-1">
                 <Button

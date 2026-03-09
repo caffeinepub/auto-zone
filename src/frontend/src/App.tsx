@@ -1,10 +1,32 @@
 import { Toaster } from "@/components/ui/sonner";
+import { useEffect, useState } from "react";
+import AdminDashboard from "./pages/AdminDashboard";
 import MainPage from "./pages/MainPage";
 
 export default function App() {
+  const [currentHash, setCurrentHash] = useState(() => window.location.hash);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      setCurrentHash(window.location.hash);
+    };
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
+  const showAdmin = currentHash === "#admin";
+
   return (
     <div className="min-h-screen bg-background">
-      <MainPage />
+      {showAdmin ? (
+        <AdminDashboard
+          onBack={() => {
+            window.location.hash = "";
+          }}
+        />
+      ) : (
+        <MainPage />
+      )}
       <Toaster
         position="top-right"
         toastOptions={{

@@ -1,47 +1,32 @@
-# Auto Zone - Professional Automobile Service Website
+# AUTO ZONE
 
 ## Current State
-The project has an existing Auto Zone website with 8 pages (Home, About, Services, Tyres & Battery, Accessories & Spare Parts, RTO Services, Contact, Service Booking) built with a black/red/metallic color scheme. The backend handles service bookings and contact form submissions.
+Single-page website for Auto Zone automobile service center. Backend has `getAllBookings()` and `getAllContacts()` functions that return stored booking and contact/enquiry records. The frontend has no admin view to see these records.
 
 ## Requested Changes (Diff)
 
 ### Add
-- Hero section with full-screen background image of mechanic in professional garage
-- "Why Choose Auto Zone" section with 6 feature highlights
-- "How It Works" 4-step process section
-- Customer Reviews / Testimonials section
-- Strong CTA section with Call Now, Book Service, Send Email buttons
-- High-quality car service images throughout (hero, about, services, garage photos)
-- Privacy Policy link in footer
+- Admin Dashboard page (`/admin`) that shows:
+  - All booked appointments (from `getAllBookings()`) in a table with columns: Name, Phone, Email, Vehicle, Service Type, Date
+  - All customer enquiries (from `getAllContacts()`) in a table with columns: Name, Phone, Email, Service Type, Message
+  - Tab switcher between "Appointments" and "Enquiries"
+  - Summary counts (total bookings, total enquiries)
+  - Empty state for each table when no data exists
+  - A link/button in the Navbar or footer to access the admin dashboard
 
 ### Modify
-- Color theme: change from black/red/metallic to navy blue (#0a1f44) and white
-- Restructure to single-page scroll layout with sections: Hero, About, Services, Why Choose Us, How It Works, Reviews, Contact, Footer
-- Hero headline: "Professional Car Care You Can Trust"
-- Hero subheadline: "30+ Years of Experience in Automotive Repair & Maintenance"
-- Services section: 8 service cards (Engine Diagnostics, Oil Change & Maintenance, Brake Repair, AC Service, Battery Replacement, Tire Services, Car Inspection, General Car Repair)
-- Contact section: include phone, email (vinodautozone@gmail.com), Google Maps embed placeholder, and contact form
-- Footer: Home, About, Services, Contact, Privacy Policy links + email
+- App.tsx: Add routing so `/admin` renders the Admin Dashboard page (use hash-based routing with `window.location.hash` or a simple state toggle, no router library needed)
+- Navbar: Add an "Admin" link that navigates to the admin dashboard
 
 ### Remove
-- Tyres & Battery page (content merged into Services)
-- Accessories & Spare Parts page
-- RTO Services page
-- Multi-page routing structure (replaced by single-page scroll)
+- Nothing
 
 ## Implementation Plan
-1. Generate high-quality automotive images: hero background (mechanic in garage), about section image, service images for each of 8 services
-2. Keep existing Motoko backend for contact form and booking submissions
-3. Rebuild frontend as a single-page scroll website with:
-   - Sticky navbar with logo, nav links (smooth scroll), Book Service CTA button
-   - Hero section: full-screen image overlay, headline, subheadline, two CTA buttons
-   - About section: text content + automotive workshop image
-   - Services section: 8 cards with icons and descriptions in responsive grid
-   - Why Choose Us: 6 feature cards with icons
-   - How It Works: 4-step horizontal process flow
-   - Customer Reviews: 3-4 testimonial cards
-   - Contact section: contact info, Google Maps iframe, contact form
-   - CTA banner: "Book Your Service Today" with 3 buttons
-   - Footer: links, email, social
-4. Apply navy blue (#0a1f44) and white design system throughout
-5. Smooth scroll behavior, mobile responsive, fast loading
+1. Create `src/frontend/src/pages/AdminDashboard.tsx` with:
+   - Tabs for "Appointments" and "Enquiries"
+   - Tables displaying records fetched from backend using `useActor`
+   - Loading state while fetching
+   - Empty state message when no records
+   - Summary stat cards at top
+2. Update `App.tsx` to handle simple hash-based routing (`#admin` → show AdminDashboard, default → show MainPage)
+3. Add "Admin" nav link in Navbar component that sets hash to `#admin`
