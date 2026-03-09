@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -13,15 +14,139 @@ import {
   ArrowLeft,
   CalendarCheck,
   ClipboardList,
+  Eye,
+  EyeOff,
   Loader2,
+  Lock,
+  LogOut,
   MessageSquare,
   Users,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import type { Booking, Contact } from "../backend";
 
+const ADMIN_PASSWORD = "autozone2024";
+const SESSION_KEY = "az_admin_auth";
+
 interface AdminDashboardProps {
   onBack: () => void;
+}
+
+function AdminLogin({ onSuccess }: { onSuccess: () => void }) {
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+  const [shake, setShake] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (password === ADMIN_PASSWORD) {
+      sessionStorage.setItem(SESSION_KEY, "1");
+      onSuccess();
+    } else {
+      setError("Incorrect password. Please try again.");
+      setShake(true);
+      setPassword("");
+      setTimeout(() => setShake(false), 500);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-az-gray-light flex items-center justify-center px-4">
+      <div
+        className={`bg-white rounded-2xl shadow-card-light border border-az-gray-border w-full max-w-sm p-8 ${
+          shake ? "animate-[shake_0.4s_ease-in-out]" : ""
+        }`}
+        style={
+          {
+            "--shake-anim": "shake",
+          } as React.CSSProperties
+        }
+      >
+        {/* Logo */}
+        <div className="flex flex-col items-center mb-8">
+          <div
+            className="w-16 h-16 rounded-2xl flex items-center justify-center mb-4 shadow-navy-glow"
+            style={{
+              background:
+                "linear-gradient(135deg, oklch(0.22 0.07 260), oklch(0.28 0.08 260))",
+            }}
+          >
+            <Lock className="w-7 h-7 text-az-gold" />
+          </div>
+          <h1 className="font-display font-black text-az-navy text-2xl text-center">
+            Admin Access
+          </h1>
+          <p className="text-muted-foreground text-sm text-center mt-1">
+            Enter the admin password to continue
+          </p>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="relative">
+            <Input
+              data-ocid="admin.password_input"
+              type={showPassword ? "text" : "password"}
+              placeholder="Enter password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                setError("");
+              }}
+              className="pr-10 border-az-gray-border focus:border-az-navy focus:ring-az-navy/20"
+              autoFocus
+            />
+            <button
+              type="button"
+              data-ocid="admin.toggle_password"
+              onClick={() => setShowPassword((v) => !v)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-az-navy transition-colors"
+              tabIndex={-1}
+            >
+              {showPassword ? (
+                <EyeOff className="w-4 h-4" />
+              ) : (
+                <Eye className="w-4 h-4" />
+              )}
+            </button>
+          </div>
+
+          {error && (
+            <p
+              data-ocid="admin.login_error_state"
+              className="text-red-500 text-sm font-medium text-center"
+            >
+              {error}
+            </p>
+          )}
+
+          <Button
+            data-ocid="admin.login_button"
+            type="submit"
+            className="w-full bg-az-navy hover:bg-az-navy-dark text-white font-semibold py-2.5"
+          >
+            Unlock Dashboard
+          </Button>
+        </form>
+      </div>
+
+      {/* Shake keyframe */}
+      <style>{`
+        @keyframes shake {
+          0%, 100% { transform: translateX(0); }
+          15%       { transform: translateX(-6px); }
+          30%       { transform: translateX(6px); }
+          45%       { transform: translateX(-5px); }
+          60%       { transform: translateX(5px); }
+          75%       { transform: translateX(-3px); }
+          90%       { transform: translateX(3px); }
+        }
+        .animate-\[shake_0\.4s_ease-in-out\] {
+          animation: shake 0.4s ease-in-out;
+        }
+      `}</style>
+    </div>
+  );
 }
 
 export default function AdminDashboard({ onBack }: AdminDashboardProps) {
@@ -30,8 +155,12 @@ export default function AdminDashboard({ onBack }: AdminDashboardProps) {
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    () => sessionStorage.getItem(SESSION_KEY) === "1",
+  );
 
   useEffect(() => {
+    if (!isAuthenticated) return;
     if (!actor || isFetching) return;
 
     setLoading(true);
@@ -48,7 +177,16 @@ export default function AdminDashboard({ onBack }: AdminDashboardProps) {
       .finally(() => {
         setLoading(false);
       });
-  }, [actor, isFetching]);
+  }, [actor, isFetching, isAuthenticated]);
+
+  if (!isAuthenticated) {
+    return <AdminLogin onSuccess={() => setIsAuthenticated(true)} />;
+  }
+
+  const handleLogout = () => {
+    sessionStorage.removeItem(SESSION_KEY);
+    setIsAuthenticated(false);
+  };
 
   return (
     <div className="min-h-screen bg-az-gray-light">
@@ -83,6 +221,16 @@ export default function AdminDashboard({ onBack }: AdminDashboardProps) {
               </div>
             </div>
           </div>
+          <Button
+            data-ocid="admin.logout_button"
+            onClick={handleLogout}
+            variant="ghost"
+            size="sm"
+            className="text-white/60 hover:text-white hover:bg-white/10 gap-2"
+          >
+            <LogOut className="w-4 h-4" />
+            Logout
+          </Button>
         </div>
       </header>
 
