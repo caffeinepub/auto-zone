@@ -7,6 +7,7 @@ import {
   ChevronRight,
   Clock,
   FileText,
+  LifeBuoy,
   Package,
   Phone,
   Settings,
@@ -23,69 +24,69 @@ import {
 const services = [
   {
     icon: <Wrench className="w-8 h-8" />,
-    title: "Car Servicing & Repair",
-    desc: "Complete engine diagnostics, oil changes, and full vehicle repair by certified technicians.",
+    title: "Car Service in Pune",
+    desc: "Complete car servicing and repair by certified technicians — engine diagnostics, oil changes, brake work and full vehicle maintenance.",
     href: "/services",
   },
   {
     icon: <Car className="w-8 h-8" />,
-    title: "Tyre Sales & Replacement",
-    desc: "New and used tyres from top brands with professional fitting and wheel alignment.",
+    title: "Tyre Shop Pune",
+    desc: "Pune's trusted tyre shop. New and used tyres from top brands with professional fitting, balancing, and wheel alignment.",
     href: "/tyres-battery",
   },
   {
     icon: <Battery className="w-8 h-8" />,
-    title: "Battery Sales & Exchange",
-    desc: "Premium car batteries with free installation, testing, and old battery exchange.",
+    title: "Car Battery Replacement",
+    desc: "Expert car battery replacement in Pune. Premium batteries, free testing, free installation, and old battery exchange.",
     href: "/tyres-battery",
   },
   {
-    icon: <Settings className="w-8 h-8" />,
-    title: "Car Accessories",
-    desc: "Wide range of car accessories professionally installed by our expert team.",
-    href: "/accessories-spare-parts",
+    icon: <Shield className="w-8 h-8" />,
+    title: "Luxury Car Service",
+    desc: "Specialised luxury car service for premium vehicles. Handled with the precision, care, and discretion your car deserves.",
+    href: "/services",
   },
   {
-    icon: <Package className="w-8 h-8" />,
-    title: "Spare Parts",
-    desc: "New and genuine second-hand spare parts for all car makes and models.",
-    href: "/accessories-spare-parts",
+    icon: <LifeBuoy className="w-8 h-8" />,
+    title: "Roadside Assistance",
+    desc: "Stuck on the road? Our roadside assistance team is ready to help with tyre changes, battery jumpstart, and emergency repairs.",
+    href: "/contact",
   },
   {
     icon: <FileText className="w-8 h-8" />,
-    title: "RTO Documentation",
-    desc: "Hassle-free vehicle registration, transfer of ownership, and all RTO paperwork.",
+    title: "RTO Paper Transfer",
+    desc: "Hassle-free RTO paper transfer, vehicle registration, ownership transfer, and all RTO documentation handled by our experts.",
     href: "/rto-services",
   },
 ];
 
 const trustPillars = [
   {
-    icon: <Shield className="w-8 h-8" />,
-    title: "Certified Technicians",
-    desc: "Our team of experienced, certified mechanics ensures top-quality service for every vehicle.",
+    icon: <Award className="w-8 h-8" />,
+    title: "30+ Years of Experience",
+    desc: "Over three decades of serving Pune's car owners. Our experience means your vehicle is always in safe, knowledgeable hands.",
   },
   {
     icon: <Package className="w-8 h-8" />,
     title: "Genuine Quality Parts",
-    desc: "We use only original or certified equivalent parts to maintain your vehicle's performance.",
+    desc: "We use only original or certified equivalent parts — new and quality-tested used parts — for lasting performance.",
   },
   {
     icon: <TrendingUp className="w-8 h-8" />,
-    title: "Competitive Pricing",
-    desc: "Fair, transparent pricing with no hidden charges. Get the best value for money.",
+    title: "Transparent Pricing",
+    desc: "Fair, upfront pricing with no hidden charges. Know exactly what you pay before any work begins.",
   },
   {
     icon: <Zap className="w-8 h-8" />,
     title: "Fast Turnaround",
-    desc: "Efficient service processes to get you back on the road as quickly as possible.",
+    desc: "Efficient service processes to get you back on the road as quickly as possible — without cutting corners.",
   },
 ];
 
 const stats = [
-  { value: "10+", label: "Years Experience" },
-  { value: "5000+", label: "Happy Customers" },
-  { value: "10", label: "Services Offered" },
+  { value: "30+", label: "Years Experience" },
+  { value: "10,000+", label: "Happy Customers" },
+  { value: "12", label: "Services Offered" },
   { value: "100%", label: "Satisfaction Rate" },
 ];
 
@@ -93,19 +94,25 @@ const testimonials = [
   {
     name: "Rajesh Kumar",
     vehicle: "Maruti Swift",
-    text: "Excellent service! My car was repaired quickly and at a very reasonable price. The staff is professional and transparent about the work needed.",
+    text: "Best car service in Pune! My car was repaired quickly and at a very reasonable price. The staff is professional and completely transparent about the work needed.",
     rating: 5,
   },
   {
     name: "Priya Sharma",
     vehicle: "Honda City",
-    text: "Got my tyres replaced and wheel alignment done. Super smooth experience. AUTO ZONE is my go-to for all car needs now!",
+    text: "Got my tyres replaced and wheel alignment done at this tyre shop in Pune. Super smooth experience. Auto Zone is now my go-to for all car needs!",
     rating: 5,
   },
   {
     name: "Amit Patil",
     vehicle: "Hyundai Creta",
-    text: "They handled all my RTO paperwork without any hassle. Very knowledgeable team. Saved me so much time and stress.",
+    text: "They handled all my RTO paper transfer without any hassle. Very knowledgeable team. Saved me so much time and stress navigating the paperwork.",
+    rating: 5,
+  },
+  {
+    name: "Sneha Desai",
+    vehicle: "Toyota Fortuner",
+    text: "Excellent luxury car service for my Fortuner. They treat premium vehicles with the care and attention they deserve. Highly recommended in Pune.",
     rating: 5,
   },
 ];
@@ -124,7 +131,6 @@ export default function HomePage() {
         />
         <div className="absolute inset-0 hero-overlay" />
 
-        {/* Diagonal red accent */}
         <div
           className="absolute right-0 top-0 bottom-0 w-1/3 opacity-10"
           style={{
@@ -135,28 +141,29 @@ export default function HomePage() {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl">
-            {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-az-red/20 border border-az-red/40 rounded-full px-4 py-1.5 mb-6 animate-fade-in">
               <span className="w-2 h-2 rounded-full bg-az-red animate-pulse" />
               <span className="text-az-red text-sm font-semibold tracking-wide uppercase">
-                Complete Car Care Center
+                Pune's Trusted Car Service Center — 30+ Years
               </span>
             </div>
 
             <h1 className="font-display text-5xl md:text-7xl font-black text-white leading-none mb-6 animate-fade-in-up">
-              YOUR TRUSTED <span className="text-red-gradient">AUTO CARE</span>{" "}
-              PARTNER
+              PUNE'S #1 <span className="text-red-gradient">AUTO CARE</span>{" "}
+              CENTER
             </h1>
 
             <p className="text-az-silver text-lg md:text-xl leading-relaxed mb-8 max-w-xl animate-fade-in-up">
-              AUTO ZONE is your one-stop automobile service center — from car
-              servicing and tyres to RTO documentation. Expert care for every
-              vehicle, every time.
+              Auto Zone is Pune's most trusted car service center — providing
+              expert car servicing, tyre shop services, car battery replacement,
+              luxury car service, roadside assistance, and RTO paper transfer
+              under one roof for over 30 years.
             </p>
 
             <div className="flex flex-wrap gap-4 animate-fade-in-up">
               <Link to="/booking">
                 <Button
+                  data-ocid="hero.primary_button"
                   size="lg"
                   className="bg-az-red hover:bg-az-red-bright text-white font-bold text-base px-8 shadow-red-glow-lg transition-all hover:-translate-y-0.5"
                 >
@@ -166,6 +173,7 @@ export default function HomePage() {
               </Link>
               <a href="tel:+919225516006">
                 <Button
+                  data-ocid="hero.secondary_button"
                   size="lg"
                   variant="outline"
                   className="border-white/30 text-white hover:bg-white/10 font-semibold text-base px-8 backdrop-blur-sm"
@@ -176,7 +184,6 @@ export default function HomePage() {
               </a>
             </div>
 
-            {/* Quick stats */}
             <div className="flex flex-wrap gap-6 mt-12 pt-8 border-t border-white/10">
               {stats.map((stat) => (
                 <div key={stat.label}>
@@ -187,6 +194,27 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SEO keyword strip */}
+      <section className="py-4 bg-az-red/90">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-white/90 text-sm font-medium">
+            {[
+              "Car Service in Pune",
+              "Tyre Shop Pune",
+              "Car Battery Replacement",
+              "Luxury Car Service",
+              "Roadside Assistance",
+              "RTO Paper Transfer",
+            ].map((kw) => (
+              <span key={kw} className="flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-white/60" />
+                {kw}
+              </span>
+            ))}
           </div>
         </div>
       </section>
@@ -203,11 +231,12 @@ export default function HomePage() {
               <span className="w-8 h-0.5 bg-az-red" />
             </div>
             <h2 className="font-display text-4xl md:text-5xl font-black text-white mb-4">
-              Our Core Services
+              Complete Car Care in Pune
             </h2>
             <p className="text-az-silver text-lg max-w-2xl mx-auto">
-              Everything your car needs, all under one roof. Professional
-              service with quality you can trust.
+              From routine car service and tyre replacement to luxury car care
+              and RTO paper transfer — everything your vehicle needs, all under
+              one roof in Pune.
             </p>
           </div>
 
@@ -215,7 +244,7 @@ export default function HomePage() {
             {services.map((service) => (
               <Link key={service.title} to={service.href}>
                 <div className="bg-az-card border border-az-surface rounded-lg p-6 card-hover h-full">
-                  <div className="w-14 h-14 rounded bg-az-red/10 flex items-center justify-center text-az-red mb-4 transition-colors group-hover:bg-az-red group-hover:text-white">
+                  <div className="w-14 h-14 rounded bg-az-red/10 flex items-center justify-center text-az-red mb-4">
                     {service.icon}
                   </div>
                   <h3 className="font-display text-lg font-bold text-white mb-2">
@@ -235,6 +264,7 @@ export default function HomePage() {
           <div className="text-center mt-10">
             <Link to="/services">
               <Button
+                data-ocid="services.primary_button"
                 size="lg"
                 className="bg-az-red hover:bg-az-red-bright text-white font-bold"
               >
@@ -258,20 +288,28 @@ export default function HomePage() {
                 </span>
               </div>
               <h2 className="font-display text-4xl md:text-5xl font-black text-white mb-6">
-                The AUTO ZONE{" "}
-                <span className="text-red-gradient">Difference</span>
+                30+ Years Serving{" "}
+                <span className="text-red-gradient">Pune</span>
               </h2>
-              <p className="text-az-silver text-lg leading-relaxed mb-8">
-                At AUTO ZONE, we combine technical expertise with genuine care
-                for your vehicle. Our state-of-the-art facility and experienced
-                team ensure your car receives the best treatment every time.
+              <p className="text-az-silver text-lg leading-relaxed mb-4">
+                Auto Zone has been the most trusted name in car service in Pune
+                for over 30 years. Whether you need routine maintenance, urgent
+                car battery replacement, a new set of tyres from our tyre shop,
+                or professional RTO paper transfer — we deliver quality every
+                single time.
+              </p>
+              <p className="text-az-silver leading-relaxed mb-8">
+                We also provide dedicated luxury car service for high-end
+                vehicles and 24/7 roadside assistance for emergencies. Our
+                experience, combined with genuine parts and skilled technicians,
+                makes us Pune's complete automotive partner.
               </p>
               <Link to="/about">
                 <Button
                   variant="outline"
                   className="border-az-red text-az-red hover:bg-az-red hover:text-white font-semibold"
                 >
-                  About AUTO ZONE
+                  About Auto Zone
                   <ChevronRight className="ml-2 w-4 h-4" />
                 </Button>
               </Link>
@@ -312,15 +350,16 @@ export default function HomePage() {
         </div>
         <div className="container mx-auto px-4 text-center relative z-10">
           <h2 className="font-display text-3xl md:text-5xl font-black text-white mb-4">
-            Ready to Service Your Vehicle?
+            Looking for Car Service Near You in Pune?
           </h2>
           <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto">
-            Book your service today and experience the AUTO ZONE difference.
-            Quick, professional, and affordable.
+            Book your service today at Auto Zone — Pune's most trusted car
+            service center for tyres, batteries, luxury cars, and more.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/booking">
               <Button
+                data-ocid="cta.primary_button"
                 size="lg"
                 className="bg-white text-az-red hover:bg-az-silver-light font-black text-base px-8 transition-all hover:-translate-y-0.5"
               >
@@ -333,6 +372,7 @@ export default function HomePage() {
               rel="noopener noreferrer"
             >
               <Button
+                data-ocid="cta.secondary_button"
                 size="lg"
                 variant="outline"
                 className="border-white text-white hover:bg-white/10 font-semibold text-base px-8"
@@ -356,11 +396,11 @@ export default function HomePage() {
               <span className="w-8 h-0.5 bg-az-red" />
             </div>
             <h2 className="font-display text-4xl md:text-5xl font-black text-white mb-4">
-              What Our Customers Say
+              What Pune Customers Say
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {testimonials.map((t) => (
               <div
                 key={t.name}
@@ -400,21 +440,26 @@ export default function HomePage() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
               <h3 className="font-display text-2xl font-black text-white mb-1">
-                Have Questions? We're Here to Help
+                Need a Car Service in Pune? Call Us Now
               </h3>
               <p className="text-az-silver">
-                Reach out to us anytime — our team is ready to assist you
+                Reach Auto Zone anytime — our team is ready to assist with car
+                service, tyres, batteries, or RTO help
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
               <a href="tel:+919225516006">
-                <Button className="bg-az-red hover:bg-az-red-bright text-white font-semibold">
+                <Button
+                  data-ocid="contact.primary_button"
+                  className="bg-az-red hover:bg-az-red-bright text-white font-semibold"
+                >
                   <Phone className="mr-2 w-4 h-4" />
                   +91 9225516006
                 </Button>
               </a>
               <Link to="/contact">
                 <Button
+                  data-ocid="contact.secondary_button"
                   variant="outline"
                   className="border-az-surface text-az-silver hover:text-white hover:border-az-red"
                 >

@@ -268,11 +268,11 @@ export default function BookingModal({ open, onClose }: BookingModalProps) {
                   >
                     <SelectTrigger
                       data-ocid="booking.service_select"
-                      className="border-az-gray-border focus:border-az-navy"
+                      className="border-az-gray-border focus:border-az-navy w-full"
                     >
                       <SelectValue placeholder="Select service" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="z-[200]">
                       {serviceTypes.map((s) => (
                         <SelectItem key={s} value={s}>
                           {s}

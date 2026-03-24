@@ -1,0 +1,453 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Cabinet Grotesk - Display headings */
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/assets/fonts/CabinetGrotesk-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Plus Jakarta Sans - Body text */
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans-Variable.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Geist Mono - Code/numbers */
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/assets/fonts/GeistMono-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* AUTO ZONE Navy & White Theme */
+    --background: 1 0 0;
+    --foreground: 0.12 0.02 260;
+
+    --card: 1 0 0;
+    --card-foreground: 0.12 0.02 260;
+
+    --popover: 1 0 0;
+    --popover-foreground: 0.12 0.02 260;
+
+    /* Primary - Navy Blue */
+    --primary: 0.22 0.07 260;
+    --primary-foreground: 0.98 0 0;
+
+    /* Secondary - Light navy */
+    --secondary: 0.94 0.02 240;
+    --secondary-foreground: 0.22 0.07 260;
+
+    /* Muted - soft gray */
+    --muted: 0.96 0.01 240;
+    --muted-foreground: 0.5 0.02 240;
+
+    /* Accent - Gold */
+    --accent: 0.72 0.1 75;
+    --accent-foreground: 0.15 0.04 260;
+
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+
+    --border: 0.88 0.02 240;
+    --input: 0.88 0.02 240;
+    --ring: 0.22 0.07 260;
+
+    --chart-1: 0.22 0.07 260;
+    --chart-2: 0.72 0.1 75;
+    --chart-3: 0.55 0.15 200;
+    --chart-4: 0.65 0.12 145;
+    --chart-5: 0.6 0.18 30;
+
+    --sidebar: 0.22 0.07 260;
+    --sidebar-foreground: 0.98 0 0;
+    --sidebar-primary: 0.72 0.1 75;
+    --sidebar-primary-foreground: 0.15 0.04 260;
+    --sidebar-accent: 0.3 0.08 260;
+    --sidebar-accent-foreground: 0.98 0 0;
+    --sidebar-border: 0.3 0.05 260;
+    --sidebar-ring: 0.72 0.1 75;
+
+    /* Custom AUTO ZONE tokens */
+    --az-navy: 0.22 0.07 260;
+    --az-navy-light: 0.3 0.08 260;
+    --az-navy-dark: 0.14 0.05 260;
+    --az-gold: 0.72 0.1 75;
+    --az-gold-bright: 0.78 0.12 78;
+    --az-gold-dark: 0.6 0.09 72;
+    --az-white: 1 0 0;
+    --az-gray: 0.5 0.02 240;
+    --az-gray-light: 0.96 0.01 240;
+    --az-gray-border: 0.88 0.02 240;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Cabinet Grotesk", sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Cabinet Grotesk", sans-serif;
+  }
+
+  .font-body {
+    font-family: "Plus Jakarta Sans", sans-serif;
+  }
+
+  .font-mono {
+    font-family: "Geist Mono", monospace;
+  }
+
+  /* Navy utilities */
+  .text-az-navy {
+    color: oklch(var(--az-navy));
+  }
+
+  .bg-az-navy {
+    background-color: oklch(var(--az-navy));
+  }
+
+  .bg-az-navy-light {
+    background-color: oklch(var(--az-navy-light));
+  }
+
+  .bg-az-navy-dark {
+    background-color: oklch(var(--az-navy-dark));
+  }
+
+  .border-az-navy {
+    border-color: oklch(var(--az-navy));
+  }
+
+  /* Gold utilities */
+  .text-az-gold {
+    color: oklch(var(--az-gold));
+  }
+
+  .bg-az-gold {
+    background-color: oklch(var(--az-gold));
+  }
+
+  .bg-az-gold-bright {
+    background-color: oklch(var(--az-gold-bright));
+  }
+
+  .text-az-gray {
+    color: oklch(var(--az-gray));
+  }
+
+  .bg-az-gray-light {
+    background-color: oklch(var(--az-gray-light));
+  }
+
+  /* Hover lift animation for service cards */
+  .card-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s
+      ease;
+  }
+
+  .card-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 48px oklch(0.22 0.07 260 / 0.18), 0 4px 12px
+      oklch(0.22 0.07 260 / 0.08);
+  }
+
+  /* Service card gold signature */
+  .service-card {
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s
+      ease;
+  }
+
+  .service-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      oklch(var(--az-gold)) 0%,
+      oklch(var(--az-gold-bright)) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 0.75rem 0.75rem 0 0;
+    z-index: 1;
+  }
+
+  .service-card:hover::before {
+    opacity: 1;
+  }
+
+  .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 48px oklch(0.22 0.07 260 / 0.16), 0 4px 12px
+      oklch(0.22 0.07 260 / 0.08);
+    border-color: oklch(var(--az-gold) / 0.4);
+  }
+
+  /* Image overlay for service card hover */
+  .service-card-img {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card-img::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      oklch(var(--az-navy) / 0) 40%,
+      oklch(var(--az-navy) / 0.5) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .service-card:hover .service-card-img::after {
+    opacity: 1;
+  }
+
+  .service-card-img img {
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .service-card:hover .service-card-img img {
+    transform: scale(1.08);
+  }
+
+  /* Navy gradient text */
+  .text-navy-gradient {
+    background: linear-gradient(
+      135deg,
+      oklch(0.3 0.08 260) 0%,
+      oklch(0.22 0.07 260) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Gold gradient text */
+  .text-gold-gradient {
+    background: linear-gradient(
+      135deg,
+      oklch(0.78 0.12 78) 0%,
+      oklch(0.6 0.09 72) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Hero overlay - dark with slight navy tint */
+  .hero-overlay {
+    background: linear-gradient(
+      135deg,
+      oklch(0.1 0.04 260 / 0.9) 0%,
+      oklch(0.08 0.02 260 / 0.75) 60%,
+      oklch(0.06 0 0 / 0.65) 100%
+    );
+  }
+
+  /* CTA Banner subtle pattern */
+  .cta-pattern {
+    background-color: oklch(var(--az-navy));
+    background-image: radial-gradient(
+        circle at 20% 50%,
+        oklch(0.3 0.09 260 / 0.4) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 50%,
+        oklch(0.72 0.1 75 / 0.08) 0%,
+        transparent 50%
+      );
+  }
+
+  /* Why choose us section bg */
+  .why-us-bg {
+    background-color: oklch(var(--az-navy));
+    background-image: radial-gradient(
+        ellipse at top right,
+        oklch(0.3 0.09 260 / 0.5) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse at bottom left,
+        oklch(0.14 0.05 260 / 0.8) 0%,
+        transparent 60%
+      );
+  }
+
+  /* Button styles */
+  .btn-navy {
+    background-color: oklch(var(--az-navy));
+    color: oklch(var(--az-white));
+    transition: all 0.2s ease;
+  }
+
+  .btn-navy:hover {
+    background-color: oklch(var(--az-navy-light));
+    box-shadow: 0 4px 20px oklch(0.22 0.07 260 / 0.35);
+    transform: translateY(-1px);
+  }
+
+  .btn-gold {
+    background-color: oklch(var(--az-gold));
+    color: oklch(var(--az-navy-dark));
+    font-weight: 700;
+    transition: all 0.2s ease;
+  }
+
+  .btn-gold:hover {
+    background-color: oklch(var(--az-gold-bright));
+    box-shadow: 0 4px 20px oklch(0.72 0.1 75 / 0.35);
+    transform: translateY(-1px);
+  }
+
+  .btn-outline-white {
+    background-color: transparent;
+    color: oklch(var(--az-white));
+    border: 2px solid oklch(var(--az-white) / 0.7);
+    transition: all 0.2s ease;
+  }
+
+  .btn-outline-white:hover {
+    background-color: oklch(var(--az-white) / 0.1);
+    border-color: oklch(var(--az-white));
+    transform: translateY(-1px);
+  }
+
+  /* Stats band */
+  .stats-band {
+    background-color: oklch(var(--az-navy));
+    background-image: radial-gradient(
+        ellipse at 0% 50%,
+        oklch(0.72 0.1 75 / 0.06) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse at 100% 50%,
+        oklch(0.3 0.09 260 / 0.4) 0%,
+        transparent 60%
+      );
+  }
+
+  /* Hero credential strip */
+  .hero-cred-strip {
+    background: oklch(1 0 0 / 0.06);
+    border: 1px solid oklch(1 0 0 / 0.12);
+    backdrop-filter: blur(8px);
+  }
+
+  /* Stat number display */
+  .stat-display {
+    font-family: "Cabinet Grotesk", sans-serif;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+
+  /* Nav link underline animation */
+  .nav-link {
+    position: relative;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: oklch(var(--az-gold));
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    width: 100%;
+  }
+
+  /* Step connector line */
+  .step-connector {
+    position: absolute;
+    top: 28px;
+    left: calc(50% + 28px);
+    right: calc(-50% + 28px);
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      oklch(var(--az-gold)),
+      oklch(var(--az-gray-border))
+    );
+  }
+
+  /* Whatsapp button */
+  .whatsapp-btn {
+    background-color: oklch(0.52 0.18 145);
+    transition: all 0.2s ease;
+  }
+
+  .whatsapp-btn:hover {
+    background-color: oklch(0.58 0.2 145);
+    box-shadow: 0 4px 20px oklch(0.52 0.18 145 / 0.4);
+    transform: translateY(-2px);
+  }
+
+  /* Star rating */
+  .star-gold {
+    color: oklch(var(--az-gold));
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
